@@ -1,0 +1,11 @@
+body {
+  margin: 0 5%;
+  height: 100%;
+  background-color: cadetblue;
+}
+
+h1 {
+  background-color: aqua;
+  color: darkblue;
+  text-align: center;
+}
