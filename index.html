@@ -4,12 +4,105 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>5-Day Weather</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"></script>
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
   <header>
     <h1>Weather Dashboard</h1>
   </header>
+
+  <main>
+    <h1 class="text-red-900">Hello</h1>
+    <div class="container-fluid">
+    <!--aside container-->
+      <div class="flex min-h-screen justify-center overflow-hidden bg-gradient-to-br from-emerald-500 via-lime-300 to-green-500">
+      <!--form-->
+        <div class="relative top-10">
+          <div class="relative w-96 max-w-lg">
+            <form>
+              <div class="flex justify-between overflow-hidden rounded-md bg-white shadow shadow-black/20">
+                <input type="text" class="block w-full flex-1 py-2 px-3 focus:outline-none" placeholder="Start Typing..." />
+                <span class="m-1 inline-flex cursor-pointer items-center rounded-md bg-indigo-600 px-2 py-2 hover:bg-indigo-700">
+                  <svg class="text-white" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M21.07 16.83L19 14.71a3.08 3.08 0 0 0-3.4-.57l-.9-.9a7 7 0 1 0-1.41 1.41l.89.89a3 3 0 0 0 .53 3.46l2.12 2.12a3 3 0 0 0 4.24 0a3 3 0 0 0 0-4.29Zm-8.48-4.24a5 5 0 1 1 0-7.08a5 5 0 0 1 0 7.08Zm7.07 7.07a1 1 0 0 1-1.42 0l-2.12-2.12a1 1 0 0 1 0-1.42a1 1 0 0 1 1.42 0l2.12 2.12a1 1 0 0 1 0 1.42Z" /></svg>
+                </span>
+              </div>
+            </form>
+            <div class="absolute mt-2 w-full overflow-hidden rounded-md bg-white">
+              <div class="cursor-pointer py-2 px-3 hover:bg-slate-100">
+                <p class="text-sm font-medium text-gray-600">Button Ripple Effect</p>
+                <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
+              </div>
+              <div class="cursor-pointer py-2 px-3 hover:bg-slate-100">
+                <p class="text-sm font-medium text-gray-600">Custom Radio Buttons</p>
+                <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
+              </div>
+              <div class="cursor-pointer py-2 px-3 hover:bg-slate-100">
+                <p class="text-sm font-medium text-gray-600">Expand Images on Hover</p>
+                <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
+              </div>
+              <div class="cursor-pointer py-2 px-3 hover:bg-slate-100">
+                <p class="text-sm font-medium text-gray-600">Custom Checkbox</p>
+                <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--weather widgets-->
+      <div class="mx-auto p-4 flex justify-center">
+        <div class="flex flex-wrap">
+          <div class="w-full   px-2">
+              <div class="bg-gray-900 text-white relative min-w-0 break-words rounded-lg overflow-hidden shadow-sm mb-4 w-full bg-white dark:bg-gray-600">
+                  <div class="px-6 py-6 relative">
+                      <div class="flex mb-4 justify-between items-center">
+                          <div>
+                              <h5 class="mb-0 font-medium text-xl">Delhi,IN</h5>
+                              <h6 class="mb-0">April 04 2021</h6><small>Cloudy</small>
+                          </div>
+                          <div class="text-right">
+                              <h3 class="font-bold text-4xl mb-0"><span>39&deg;</span></h3>
+                          </div>
+                      </div>
+                      <div class="block sm:flex justify-between items-center flex-wrap">
+                          <div class="w-full sm:w-1/2">
+                              <div class="flex mb-2 justify-between items-center"><span>Temp</span><small class="px-2 inline-block">39.11&nbsp;&deg;</small></div>
+                          </div>
+                          <div class="w-full sm:w-1/2">
+                              <div class="flex mb-2 justify-between items-center"><span>Feels like</span><small class="px-2 inline-block">33.33&nbsp;&deg;</small></div>
+                          </div>
+                          <div class="w-full sm:w-1/2">
+                              <div class="flex mb-2 justify-between items-center"><span>Temp min</span><small class="px-2 inline-block">24.9&nbsp;&deg;</small></div>
+                          </div>
+                          <div class="w-full sm:w-1/2">
+                              <div class="flex mb-2 justify-between items-center"><span>Temp max</span><small class="px-2 inline-block">39&nbsp;&deg;</small></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="divider table mx-2 text-center bg-transparent whitespace-nowrap"><span class="inline-block px-3"><small>Forecast</small></span></div>
+                  <div class="px-6 py-6 relative">
+                      <div class="text-center justify-between items-center flex" style="flex-flow: initial;">
+                          <div class="text-center mb-0 flex items-center justify-center flex-col"><span class="block my-1">Sun</span><img src="https://i.imgur.com/ffgW9JQ.png" class="block w-8 h-8"><span class="block my-1">38.3&deg;</span></div>
+                          <div class="text-center mb-0 flex items-center justify-center flex-col"><span class="block my-1">Mon</span><img src="https://i.imgur.com/BQbzoKt.png" class="block w-8 h-8"><span class="block my-1">39.9&deg;</span></div>
+                          <div class="text-center mb-0 flex items-center justify-center flex-col"><span class="block my-1">Mon</span><img src="https://i.imgur.com/BQbzoKt.png" class="block w-8 h-8"><span class="block my-1">40.1&deg;</span></div>
+                          <div class="text-center mb-0 flex items-center justify-center flex-col"><span class="block my-1">Mon</span><img src="https://i.imgur.com/ffgW9JQ.png" class="block w-8 h-8"><span class="block my-1">41.5&deg;</span></div>
+                          <div class="text-center mb-0 flex items-center justify-center flex-col"><span class="block my-1">Mon</span><img src="https://i.imgur.com/ffgW9JQ.png" class="block w-8 h-8"><span class="block my-1">40.1&deg;</span></div>
+                          <div class="text-center mb-0 flex items-center justify-center flex-col"><span class="block my-1">Mon</span><img src="https://i.imgur.com/BQbzoKt.png" class="block w-8 h-8"><span class="block my-1">38&deg;</span></div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="assets/script.js"></script>
+
 </body>
 </html>
+

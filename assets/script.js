@@ -1,1 +1,3 @@
-var APIkey = "1d7c424a7e3f71fedc830945372a8502"
+var weatherAPIkey="1d7c424a7e3f71fedc830945372a8502";
+var zipAPIkey="NT4EW6AL8NMC0JK3FLRJ";
+
