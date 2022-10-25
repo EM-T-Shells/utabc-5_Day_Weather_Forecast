@@ -10,62 +10,76 @@
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header>
-    <h1>Weather Dashboard</h1>
+
+  <header class="sticky top-0 px-4 py-2 bg-blue-100">
+    <div class="container flex items-center justify-around mx-auto">
+      <img
+        src="https://cdn.hashnode.com/res/hashnode/image/upload/v1643004937711/k3NMskkSn.png"
+        width="50"
+        alt="weather icon"
+      />
+      <h1><strong>Weather Dashboard</strong></h1>
+    </div>
   </header>
 
   <main>
-    <h1 class="text-red-900">Hello</h1>
-    <div class="container-fluid">
-    <!--aside container-->
-      <div class="flex min-h-screen justify-center overflow-hidden bg-gradient-to-br from-emerald-500 via-lime-300 to-green-500">
-      <!--form-->
-        <div class="relative top-10">
-          <div class="relative w-96 max-w-lg">
-            <form>
-              <div class="flex justify-between overflow-hidden rounded-md bg-white shadow shadow-black/20">
-                <input type="text" class="block w-full flex-1 py-2 px-3 focus:outline-none" placeholder="Start Typing..." />
-                <span class="m-1 inline-flex cursor-pointer items-center rounded-md bg-indigo-600 px-2 py-2 hover:bg-indigo-700">
-                  <svg class="text-white" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M21.07 16.83L19 14.71a3.08 3.08 0 0 0-3.4-.57l-.9-.9a7 7 0 1 0-1.41 1.41l.89.89a3 3 0 0 0 .53 3.46l2.12 2.12a3 3 0 0 0 4.24 0a3 3 0 0 0 0-4.29Zm-8.48-4.24a5 5 0 1 1 0-7.08a5 5 0 0 1 0 7.08Zm7.07 7.07a1 1 0 0 1-1.42 0l-2.12-2.12a1 1 0 0 1 0-1.42a1 1 0 0 1 1.42 0l2.12 2.12a1 1 0 0 1 0 1.42Z" /></svg>
-                </span>
-              </div>
-            </form>
-            <div class="absolute mt-2 w-full overflow-hidden rounded-md bg-white">
-              <div class="cursor-pointer py-2 px-3 hover:bg-slate-100">
-                <p class="text-sm font-medium text-gray-600">Button Ripple Effect</p>
-                <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
-              </div>
-              <div class="cursor-pointer py-2 px-3 hover:bg-slate-100">
-                <p class="text-sm font-medium text-gray-600">Custom Radio Buttons</p>
-                <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
-              </div>
-              <div class="cursor-pointer py-2 px-3 hover:bg-slate-100">
-                <p class="text-sm font-medium text-gray-600">Expand Images on Hover</p>
-                <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
-              </div>
-              <div class="cursor-pointer py-2 px-3 hover:bg-slate-100">
-                <p class="text-sm font-medium text-gray-600">Custom Checkbox</p>
-                <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
-              </div>
-            </div>
+    <div class="container-fluid flex flex-col min-h-screen items-center justify-center space-y-7 overflow-hidden bg-gradient-to-br from-purple-500 via-violet-300 to-blue-500">
+
+      <!--form input-->
+      <div class="relative w-96 max-w-lg">
+        <form>
+          <div class="flex justify-between overflow-hidden rounded-md bg-white shadow shadow-black/20">
+
+            <input type="text" id="cityInput" class="block w-full flex-1 py-2 px-3 focus:outline-none" placeholder="Start Typing..." />
+
+            <span class="btn m-1 inline-flex cursor-pointer items-center rounded-md bg-indigo-600 px-2 py-2 hover:bg-pink-700" onclick="getInput()">
+
+              <svg class="text-white" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M21.07 16.83L19 14.71a3.08 3.08 0 0 0-3.4-.57l-.9-.9a7 7 0 1 0-1.41 1.41l.89.89a3 3 0 0 0 .53 3.46l2.12 2.12a3 3 0 0 0 4.24 0a3 3 0 0 0 0-4.29Zm-8.48-4.24a5 5 0 1 1 0-7.08a5 5 0 0 1 0 7.08Zm7.07 7.07a1 1 0 0 1-1.42 0l-2.12-2.12a1 1 0 0 1 0-1.42a1 1 0 0 1 1.42 0l2.12 2.12a1 1 0 0 1 0 1.42Z" /></svg>
+
+            </span>
+          </div>
+        </form>
+
+        <!--??search suggestions
+        <div class="absolute mt-2 w-full overflow-hidden rounded-md bg-white">
+          <div class="cursor-pointer py-2 px-3 hover:bg-slate-100">
+            <p class="text-sm font-medium text-gray-600">Button Ripple Effect</p>
+            <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
+          </div>
+          <div class="cursor-pointer py-2 px-3 hover:bg-slate-100">
+            <p class="text-sm font-medium text-gray-600">Custom Radio Buttons</p>
+            <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
+          </div>
+          <div class="cursor-pointer py-2 px-3 hover:bg-slate-100">
+            <p class="text-sm font-medium text-gray-600">Expand Images on Hover</p>
+            <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
+          </div>
+          <div class="cursor-pointer py-2 px-3 hover:bg-slate-100">
+            <p class="text-sm font-medium text-gray-600">Custom Checkbox</p>
+            <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
           </div>
         </div>
+        -->
       </div>
-      <!--weather widgets-->
-      <div class="mx-auto p-4 flex justify-center">
+
+      <!--weather widget-->
+      <div class="mx-auto p-4 flex justify-center ">
         <div class="flex flex-wrap">
           <div class="w-full   px-2">
               <div class="bg-gray-900 text-white relative min-w-0 break-words rounded-lg overflow-hidden shadow-sm mb-4 w-full bg-white dark:bg-gray-600">
+                  <!--city-today-->
                   <div class="px-6 py-6 relative">
                       <div class="flex mb-4 justify-between items-center">
                           <div>
-                              <h5 class="mb-0 font-medium text-xl">Delhi,IN</h5>
-                              <h6 class="mb-0">April 04 2021</h6><small>Cloudy</small>
+                              <h5 id="cityName" class="mb-0 font-medium text-xl">Delhi,IN</h5>
+
+                              <h6 id="todayDate" class="mb-0">April 04 2021</h6><small>Cloudy</small>
                           </div>
                           <div class="text-right">
-                              <h3 class="font-bold text-4xl mb-0"><span>39&deg;</span></h3>
+                              <h3 class="font-bold text-4xl mb-0"><span id="todayTemp">39&deg;</span></h3>
                           </div>
                       </div>
+                      <!--5 day forecast-->
                       <div class="block sm:flex justify-between items-center flex-wrap">
                           <div class="w-full sm:w-1/2">
                               <div class="flex mb-2 justify-between items-center"><span>Temp</span><small class="px-2 inline-block">39.11&nbsp;&deg;</small></div>
@@ -96,6 +110,8 @@
               </div>
           </div>
       </div>
+
+    <!--container closed-->
     </div>
   </main>
 
