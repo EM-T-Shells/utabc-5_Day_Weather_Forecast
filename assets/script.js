@@ -1,23 +1,29 @@
-var weatherAPIkey="1d7c424a7e3f71fedc830945372a8502";
-var zipAPIkey="NT4EW6AL8NMC0JK3FLRJ";
+const input = document.querySelector("#input");
+const city = document.querySelector("#city");
 
+const cityName = document.querySelector("#cityName");
+const temp = document.querySelector("#temp");
+const main = document.querySelector("#main");
+const image = document.querySelector("#image");
 
-function getInput(){
-  const newCity = document.getElementById(cityInput);
-  const cityName = document.getElementById(cityName);
-  cityName.innerHTML = newCity.value;
+input.onsubmit = (e) => {
+  e.preventDefault();
+  getWeather(city.value);
+  city.value = "";
+};
+
+function getWeather(city){
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=1d7c424a7e3f71fedc830945372a8502`;
+  fetch(apiURL)
+  .then(response => response.json())
+  .then((data)=> {
+    cityName.innerHTML = data.name;
+    main.innerHTML = data.weather[0].main;
+    let degrees = data.main.temp;
+    let deg = Math.trunc(degrees);
+    temp.innerHTML = deg + "°";
+    image.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+  })
 }
 
-fetch("https://api.openweathermap.org/data/2.5/forecast?q='+newName.value+'&appid=1d7c424a7e3f71fedc830945372a8502")
-  .then(response => response.json())
-  .then(data => {
-    for (i=0;i<5;i++) {
-      document.getElementById("day" + (i+1)+"Min").innerHTML="Min: "+ Number(data.list[i].main.temp_min -296.75).toFixed(1)+"°"
-    }
-    for (i=0;i<5;i++) {
-      document.getElementById("day" + (i+1)+"Max").innerHTML="Max: "+ Number(data.list[i].main.temp_max -296.75).toFixed(1)+"°"
-    }
-    for (i=0;i<5;i++) {
-      document.getElementById("img" +(i+1)).style
-    }
-})
+getWeather("austin")
