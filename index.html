@@ -1,144 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>meWeather</title>
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-   <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>meWeather</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="assets/style.css" rel="stylesheet">
 </head>
 
-<body class="border-2 h-screen bg-blue-900 bg-cover">
+<body class="border-2 h-screen w-auto flex flex-col items-center bg-blue-900 bg-cover">
 
-   <header class="flex justify-between">
-      <h1 class="text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
-         <span id="title" class="text-transparent bg-clip-text bg-gradient-to-r to-red-200 from-orange-300">
-         meWeather
-         </span>
-         <h2 id="jsSubTitleQuote" class=" text-2xl text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400" " >
-         a cooler weather app
-         </h2>
-      </h1>
-      <nav class = "flex"></nav>
-      <!--searchInput & searchBtn ... J.S. dataInput -->
-      <input
-         class="input bg-gradient-to-br
-            text-white from-cyan-400 via-indigo-500 to-purple-600 hover:outline focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-500 shadow-xl shadow-pink-500/50 dark:shadow-xl dark:shadow-pink-800/80 rounded-lg text-center"
-         placeholder="Search City"
-         type="text"
-         id="jsInput"
-         name="type city"
-         class="form-control ml-2 h-14 w-full  text-base font-normal rounded transition ease-in-out m-0 bg-yellow-300  focus:opacity-80 focus:text-red-700 focus:border-red-800 focus:outline-none"
-         required>
-      >
-      <button
-         id ="jsBtn"
-         class="text-white bg-gradient-to-r from-red-300 via-red-500
-            to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-300 shadow-lg shadow-pink-500/50 dark:shadow-xl dark:shadow-orange-400/80 rounded-lg"
-         type="button"
-         onclick="getData()"
-      >
-         <i class="fa py-1 px-4">
-            ☄️
-         </i>
-      </button>
-   </header>
-
-   <div class="border">
-      <h1 id="jsCityName" class="p-5 text-white text-5-xl"> </h1>
-   </div>
-
-   <!--main weather-->
-   <div class="grid grid-cols-3 text-white border-4 border-pink-500 mx-40  my-4">
-      <h2 id="jsDay1" class="col-start-1 text-2xl md:text-3xl lg:text-4xl mb-2">Day</h2>
-      <span class="m-auto">
-         <img id="jsIcon1" class="border"  alt="weather_icon"/>
+  <header class="flex space-y-10">
+    <h1 class="w-full text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+      <span id="title" class="text-transparent bg-clip-text bg-gradient-to-r to-red-200 from-orange-300">
+        meWeather
       </span>
-      <h3 id="jsTemp1" class="text-2xl">---</h3>
-      <h3 id="jsDescr1" class="col-start-1 text-2xl">---</h3>
+      <p id="jsSubTitleQuote"
+        class=" text-2xl text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
+        a cooler weather app
+      </p>
+    </h1>
+    <!--searchInput & searchBtn ... J.S. dataInput -->
+    <input
+      class="input w-1/2 realtive bg-gradient-to-br
+            text-white from-cyan-400 via-indigo-500 to-purple-600 hover:outline focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-500 shadow-xl shadow-pink-500/50 dark:shadow-xl dark:shadow-pink-800/80 rounded-lg text-center"
+      placeholder="Enter City" type="text" id="jsInput" value="city" required>
 
-      <h3 id="jsTemp1" class="text-2xl">---</h3>
-      <h3 id="jsHumidity1" class="text-2xl">---</h3>
-      <h3 id="jsWindSpeed1" class="text-2xl">---</h3>
-   </div>
+    <button id="jsSearchBtn"
+      class="fa py-1 px-4 text-white bg-gradient-to-r from-red-300 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-300 shadow-lg shadow-pink-500/50 dark:shadow-xl dark:shadow-orange-400/80 rounded-lg" onclick=""> ☄️ </button>
+  </header>
 
-   <!--history-->
-   <div class="flex flex-col items-center word-wrap space-y-5 mx-28 border-y-2 p-4 ">
-      <h5 class="text-white text-lg underline">
-         Search History
-      </h5>
+  <div class="border-t-4 mt-10 mb-5">
+    <h1 id="jsCityName" class="p-5 text-white text-5-xl">-------</h1>
+    <p class="border-b-4"></p>
+  </div>
 
-      <ul id="search-history" class="text-center text-white">
-         <!-- new <li> to be inserted here-->
-      </ul>
-   </div>
+  <!--main weather-->
+  <div class="grid grid-cols-3 text-white border-4 border-pink-500 mx-40  my-4">
+    <h2 id="jsDay1" class="text-2xl md:text-3xl lg:text-4xl mb-2">Day</h2>
+    <h3 id="jsDescr1" class="weatherText col-start-2 text-2xl">---</h3>
+    <span class="m-auto">
+      <img id="jsIcon1" class="border" alt="weather_icon" />
+    </span>
+    <h3 id="jsTemp1" class="text-2xl">---</h3>
+    <h3 id="jsHumidity1" class="text-2xl">---</h3>
+    <h3 id="jsWindSpeed1" class="text-2xl">---</h3>
+  </div>
 
-   <button id="search-clear" type="button" class="border border-2 bg-purple-500 hover:bg-pink-600 text-white w-1/6 p-2">
-      clear history
-   </button>
+  <!--5day weather panel-->
+  <aside class="card-container grid col-3">
+    <div class="grid grid-cols-3 text-white border-4 border-pink-500 mb-2">
+      <h2 id="jsDay2" class="text-2xl md:text-3xl lg:text-4xl mb-2">Day</h2>
+      <h3 id="jsDescr2" class="weatherText col-start-2 text-2xl">---</h3>
+      <span class="m-auto">
+        <img id="jsIcon2" class="border" alt="weather_icon" />
+      </span>
+      <h3 id="jsTemp2" class="text-2xl">---</h3>
+      <h4 id="jsWindSpeed2" class="text-2xl">---</h3>
+      <h4 id="jsHumidity2" class="text-2xl">---</h3>
+    </div>
 
-   <!--5day weather panel-->
-   <aside class="card-container grid col-3">
-      <div class="col-start-3 text-white border-4 border-teal-300 rounded-lg">
-         <div class="grid grid-cols-3 text-white border-4 border-pink-500 mb-2">
-            <h2 id="jsDay1" class="text-2xl md:text-3xl lg:text-4xl mb-2">Day</h2>
-            <h3 id="jsDescr1" class="weatherText col-start-2 text-2xl">---</h3>
-            <span class="m-auto">
-               <img id="jsIcon1" class="border"  alt="weather_icon"/>
-            </span>
-            <h3 id="jsTemp1" class="text-2xl">---</h3>
-            <h3 id="jsHumidity1" class="text-2xl">---</h3>
-            <h3 id="jsWindSpeed1" class="text-2xl">---</h3>
-         </div>
-
-         <div class="grid grid-cols-3 text-white border-4 border-pink-500 mb-2">
-            <h2 id="jsDay2" class="text-2xl md:text-3xl lg:text-4xl mb-2">Day</h2>
-            <h3 id="jsDescr2" class="weatherText col-start-2 text-2xl">---</h3>
-            <span class="m-auto">
-               <img id="jsIcon2" class="border"  alt="weather_icon"/>
-            </span>
-            <h3 id="jsTemp2" class="text-2xl">---</h3>
-            <h4 id="jsWindSpeed2" class="text-2xl">---</h3>
-            <h4 id="jsHumidity2" class="text-2xl">---</h3>
-         </div>
-
-         <div class="grid grid-cols-3 text-white border-4 border-pink-500">
-            <h2 id="jsDay3" class="text-2xl md:text-3xl lg:text-4xl mb-2">Day</h2>
-            <h3 id="jsDescr3" class="weatherText col-start-2 text-2xl">---</h3>
-            <span class="m-auto">
-               <img id="jsIcon3" class="border"  alt="weather_icon"/>
-            </span>
-            <h3 id="jsTemp3" class="temp  text-2xl">---</h3>
-            <h4 id="jsWindSpeed3" class="temp  text-2xl">---</h3>
-            <h4 id="jsHumidity3" class="temp  text-2xl">---</h3>
-         </div>
-
-         <div class="grid grid-cols-3 text-white border-4 border-pink-500">
-            <h2 id="jsDay4" class="text-2xl md:text-3xl lg:text-4xl mb-2">Day</h2>
-            <h3 id="jsDescr4" class="weatherText col-start-2 text-2xl">---</h3>
-            <span class="m-auto">
-               <img id="jsIcon4" class="border"  alt="weather_icon"/>
-            </span>
-            <h3 id="jsTemp4" class="temp  text-2xl">---</h3>
-            <h4 id="jsWindSpeed4" class="temp  text-2xl">---</h3>
-            <h4 id="jsHumidity4" class="temp  text-2xl">---</h3>
-         </div>
-
-         <div class="grid grid-cols-3 text-white border-4 border-pink-500">
-            <h2 id="jsDay5" class="text-2xl md:text-3xl lg:text-4xl mb-2">Day</h2>
-            <h3 id="jsDescr5" class="weatherText col-start-2 text-2xl">---</h3>
-            <span class="m-auto">
-               <img id="jsIcon5" class="border"  alt="weather_icon"/>
-            </span>
-            <h3 id="jsTemp5" class="temp  text-2xl">---</h3>
-            <h4 id="jsWindSpeed5" class="temp  text-2xl">---</h3>
-            <h4 id="jsHumidity5" class="temp  text-2xl">---</h3>
-         </div>
+      <div class="grid grid-cols-3 text-white border-4 border-pink-500">
+        <h2 id="jsDay3" class="text-2xl md:text-3xl lg:text-4xl mb-2">Day</h2>
+        <h3 id="jsDescr3" class="weatherText col-start-2 text-2xl">---</h3>
+        <span class="m-auto">
+          <img id="jsIcon3" class="border" alt="weather_icon" />
+        </span>
+        <h3 id="jsTemp3" class="temp  text-2xl">---</h3>
+        <h4 id="jsWindSpeed3" class="temp  text-2xl">---</h3>
+          <h4 id="jsHumidity3" class="temp  text-2xl">---</h3>
       </div>
-   </aside>
-   <script src="assets/script.js"></script>
+
+      <div class="grid grid-cols-3 text-white border-4 border-pink-500">
+        <h2 id="jsDay4" class="text-2xl md:text-3xl lg:text-4xl mb-2">Day</h2>
+        <h3 id="jsDescr4" class="weatherText col-start-2 text-2xl">---</h3>
+        <span class="m-auto">
+          <img id="jsIcon4" class="border" alt="weather_icon" />
+        </span>
+        <h3 id="jsTemp4" class="temp  text-2xl">---</h3>
+        <h4 id="jsWindSpeed4" class="temp  text-2xl">---</h3>
+          <h4 id="jsHumidity4" class="temp  text-2xl">---</h3>
+      </div>
+
+      <div class="grid grid-cols-3 text-white border-4 border-pink-500">
+        <h2 id="jsDay5" class="text-2xl md:text-3xl lg:text-4xl mb-2">Day</h2>
+        <h3 id="jsDescr5" class="weatherText col-start-2 text-2xl">---</h3>
+        <span class="m-auto">
+          <img id="jsIcon5" class="border" alt="weather_icon" />
+        </span>
+        <h3 id="jsTemp5" class="temp  text-2xl">---</h3>
+        <h4 id="jsWindSpeed5" class="temp  text-2xl">---</h3>
+          <h4 id="jsHumidity5" class="temp  text-2xl">---</h3>
+      </div>
+
+     <!--  <div class="grid grid-cols-3 text-white border-4 border-pink-500 mb-2">
+        <h2 id="jsDayMain" class="text-2xl md:text-3xl lg:text-4xl mb-2">Day</h2>
+        <h3 id="jsDescrMain" class="weatherText col-start-2 text-2xl">---</h3>
+        <span class="m-auto">
+          <img id="jsIconMain" class="border" alt="weather_icon" />
+        </span>
+        <h3 id="jsTempMain" class="text-2xl">---</h3>
+        <h3 id="jsHumidityMain" class="text-2xl">---</h3>
+        <h3 id="jsWindSpeedMain" class="text-2xl">---</h3>
+      </div> -->
+
+    </div>
+  </aside>
+
+  <!--history-->
+  <div class="sidebar flex flex-col items-center word-wrap space-y-5 mx-28 border-y-2 p-4 ">
+    <h5 class="text-white text-lg underline">
+      Search History
+    </h5>
+    <ul id="historyList" class="text-center text-white">
+      <!-- new li > a to be inserted here-->
+      <li>List item</li>
+    </ul>
+  </div>
+
+  <button id="clearHistoryBtn" type="button"
+    class="border border-2 bg-purple-500 hover:bg-pink-600 text-white w-1/6 p-2">
+    clear history
+  </button>
+
+  <script src="assets/script.js"></script>
 </body>
+
 </html>
